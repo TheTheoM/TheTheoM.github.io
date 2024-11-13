@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Animated Conway's Game of Life Background with Speed Variable</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .card {
+            position: relative;
+            background-color: transparent;
+        }
+
+        #gameOfLife {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background-color: transparent;
+            height: 50%;
+            width: 100%;
+            filter: blur(4px);
+
+        }
+        #content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .card-content-container {
+            z-index: 14;
+            position: absolute;
+                top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: rgba(42, 9, 75, 0.334);
+            height: 100%;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card" id="card-gameOfLife">
+        <div class="card-content-container">
+            <div class="card-content">
+                <h3>Gravity Simulator</h3>
+                <p>The Gravity Simulator models celestial bodies interacting through gravity using Newtonian mechanics. It simulates the motion of objects like the sun, moons, and planets, considering their masses, velocities, and gravitational forces. The simulation includes collision logic and real-time visualization of gravitational attraction.</p>
+                <br>
+                <ul class="project-tech-skills">
+                    <li><strong>Technologies:</strong> Python, Pygame, Turtle</li>
+                    <li><strong>Physics:</strong> Based on Newtonian mechanics, including gravitational force and collision detection.</li>
+                    <li><strong>Features:</strong> Real-time motion visualization, customizable parameters for mass, velocity, and collision behavior</li>
+                    <li><strong>Performance:</strong> Optimized for smooth, real-time physics updates and rendering</li>
+                </ul>
+            </div>
+            <div class="project-icons">
+                <a href="https://github.com" target="_blank" class="github-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+        <canvas id="gameOfLife"></canvas>
+    </div>
+
+
+
+    <script>
+        const CGOL_canvas = document.getElementById('gameOfLife');
+        const CGOL_ctx = CGOL_canvas.getContext('2d');
+        const container = document.getElementById('card-gameOfLife');
+
+        let CELL_SIZE = 40;
+        let COLS, ROWS;
+        let grid;
+
+        // Speed control variable (frames per second)
+        let fps = 3; // You can change this value to adjust the speed
+
+        let lastUpdateTime = 0;
+
+        function initializeGrid() {
+            CGOL_canvas.width = container.offsetWidth;
+            CGOL_canvas.height = container.offsetHeight;
+            COLS = Math.floor(CGOL_canvas.width / CELL_SIZE);
+            ROWS = Math.floor(CGOL_canvas.height / CELL_SIZE);
+            grid = new Array(COLS).fill(null)
+                .map(() => new Array(ROWS).fill(null)
+                .map(() => Math.random() > 0.8));
+        }
+
+        function update() {
+            const next = grid.map(arr => [...arr]);
+
+            for (let col = 0; col < COLS; col++) {
+                for (let row = 0; row < ROWS; row++) {
+                    const cell = grid[col][row];
+                    let numNeighbors = 0;
+                    for (let i = -1; i < 2; i++) {
+                        for (let j = -1; j < 2; j++) {
+                            if (i === 0 && j === 0) continue;
+                            const x = (col + i + COLS) % COLS;
+                            const y = (row + j + ROWS) % ROWS;
+                            numNeighbors += grid[x][y];
+                        }
+                    }
+                    if (cell && (numNeighbors < 2 || numNeighbors > 3)) next[col][row] = 0;
+                    else if (!cell && numNeighbors === 3) next[col][row] = 1;
+                }
+            }
+            grid = next;
+        }
+
+        function draw() {
+            CGOL_ctx.clearRect(0, 0, CGOL_canvas.width, CGOL_canvas.height);
+            for (let col = 0; col < COLS; col++) {
+                for (let row = 0; row < ROWS; row++) {
+                    const cell = grid[col][row];
+                    CGOL_ctx.fillStyle = cell ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 0)';
+                    CGOL_ctx.fillRect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE - 1, CELL_SIZE - 1);
+                }
+            }
+        }
+
+        function animate(currentTime) {
+            if (currentTime - lastUpdateTime > 1000 / fps) {
+                update();
+                draw();
+                lastUpdateTime = currentTime;
+            }
+            requestAnimationFrame(animate);
+        }
+
+        initializeGrid();
+        requestAnimationFrame(animate);
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            initializeGrid();
+        });
+    </script>
+</body>
+</html>

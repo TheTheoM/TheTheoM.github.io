@@ -2,26 +2,524 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <title>My Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.35.1/tsparticles.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic">
+    <script type="module" src="script.js" defer></script>
+    <script type="module" src="script-copy.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Quintessential&family=Roboto:wght@300&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
+<style>
+
+    .card {
+        position: relative;
+        background-color: transparent;
+    }
+
+    #gameOfLife {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background-color: transparent;
+        height: 10%;
+        width: 100%;
+        filter: blur(4px);
+
+    }
+    #content {
+        position: relative;
+        z-index: 1;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    .card-content-container {
+        z-index: 14;
+        position: absolute;
+            top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: rgba(42, 9, 75, 0.334);
+        height: 100%;
+        width: 100%;
+
+    }
+
+    #card-gameOfLife > .card-content {
+        background-color: transparent !important;
+    }
+
+</style>
+<style>
+    .card {
+        position: relative;
+        background-color: transparent;
+    }
+
+    #gameOfLife {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background-color: transparent;
+        height: 20%;  /* Set canvas height to 30% of container */
+        width: 100%;
+        filter: blur(4px);
+        display: none;  /* Initially hide the canvas */
+    }
+
+    #content {
+        position: relative;
+        z-index: 1;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    .card-content-container {
+        z-index: 14;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: rgba(42, 9, 75, 0.334);
+        height: 100%;
+        width: 100%;
+    }
+
+    #card-gameOfLife > .card-content {
+        background-color: transparent !important;
+    }
+
+    /* Show the canvas when hovering over the card */
+    #card-gameOfLife:hover #gameOfLife {
+        display: block;
+    }
+</style>
+
+
 <body>
+    <div class="navbar" id="navbar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 5 54 28" width="50px" height="33px" class="svg">
+            <path d="M 34 12 L 34 8 L 10 8 L 10 12 L 20 12 L 20 20 L 22 24 L 24 20 L 24 12 M 34 14 L 34 36 L 30 36 L 30 22 L 22 36 L 14 22 L 14 36 L 10 36 L 10 14 L 14 14 L 22 28 L 30 14" fill="white"></path>
+        </svg>
+          
+        <div>
+            <a href="#About">About</a>
+            <a href="#Honours">honours</a>
+            <a href="#Projects">Projects</a>
+            <!-- <a href="#work">Work</a> -->
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
 
-    <header>
-        <h1>Welcome to My Weasdasdadsbsite</h1>
-    </header>
+    <script>
+        // When the user scrolls the page, execute the function
+        window.onscroll = function() {toggleNavbar()};
 
-    <main>
-        <section>
-            <p>This is the main content area.</p>
-        </section>
-    </main>
+        // Get the navbar
+        var navbar = document.getElementById("navbar");
 
-    <footer>
-        <p>&copy; 2024 Your Name</p>
-    </footer>
+        // Add the 'scrolled' class to the navbar when you scroll down 50px from the top
+        function toggleNavbar() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        }
+    </script>
+
+    <!-- Banner Section -->
+    <div class="banner" id="About">
+        <div class="tsparticles-main"></div>
+        <div class="banner-content">
+            <!-- <h1>HI, I'M THEO</h1> -->
+            <h1>theodore marlow</h1>
+            <h3>Software Development and Cyber Enthusiast</h3>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/theodore-marlow/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/TheTheoM/" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:theomarlow6@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <section class="section" id="about-me-section">
+        <!-- About Me Section -->
+        <div class="about-me">
+            <h1 class="sectionTitle">About Me</h1>
+            <div class="context-text">
+                <p class="intro">
+                    I’m a true multidisciplinary at my core, passionate about software, cybersecurity, and creating meaningful digital experiences
+                </p>
+                <p>
+                    My name is Theo, and my journey into the world of tech began in an unconventional way. 
+                    As a kid, I would pick up broken electronics from the side of the road, fix them, and try to make them work again. 
+                    That hands-on experience sparked my curiosity, and soon I was linking these salvaged devices together with code. 
+                  </p>
+                  <p>
+                    Now, as a fourth-year Computer Science student, I’m exploring everything from Full Stack Web Development to AI-powered security systems. 
+                    Along the way, I’ve had the opportunity to work on diverse projects, building secure web apps and developing cybersecurity tools that push the
+                    boundaries of what’s possible.
+                  </p>
+                <br>
+                <h3>Here’s what I’ve been working with:</h3>
+                <ul class="tech-list">
+                    <li>Python (4+ years)</li>
+                    <li>AI & ML</li>
+                    <li>Node.js</li>
+                    <li>ReactJS</li>
+                    <li>WordPress + Elementor</li>
+                    <li>Docker, Git, Jenkins</li>
+                    <li>Quantum Cryptography</li>
+                    <li>C++ / C</li>
+                    <li>Full Stack Dev</li>
+                    <li>Threat Intelligence</li>
+                    <li>SIEM & IDPS</li>
+                    <li>Incident Response</li>
+                </ul>
+            </div>
+            <br/>
+        </div>
+    </section>
+
+    <!-- Honours Section -->
+    <section class="section" id="Honours">
+        <h2 class="sectionTitle">Honours Project</h2>
+        <div class="honours-content">
+            <div class="about-honours">
+                <h1>Mixing AI, Quantum Security and Neuroscience</h1>
+                <div class="context-text">
+                    <br/>
+                    <p>
+                        BCIs allow human brains to <strong>directly</strong> control or even 
+                            communicate with machines, devices, and more. But the problem is, current BCI data
+                            can be used to literally read someone's mind—guess passwords, subliminally 
+                            detect who you know, figure out your mood, and more. 
+                    </p>
+                    <br/>
+                    <p>
+                    This problem will only get more severe as in the future
+                    <strong>Quantum Computers</strong> will break encryption making all BCI
+                        recorded data vulnerable. 
+                    </p>
+                    <br>
+
+                    <p>
+                        My solution uses <strong>Lattices</strong>, a mathematical structure similar to the ones on the graphic, 
+                        to securely encrypt the data, even safely from Quantum Computers.
+
+                        The remarkable things about Lattices, is they allow for data to be processed, while encrypted,
+                        something that is impossible with traditional cryptography. Meaning that your vulnerable data, 
+                        would never need to be decrypted (where its vulnerable) to be processed.
+                    </p>
+                    <br/>
+                    <p>
+                        This property is called <strong> Homomorphic Cryptography</strong>.
+                    </p>
+                </div>
+            </div>
+            <div class="deer-container">
+                <div class="deer"></div>
+            </div>
+        </div>
+        <br/>
+        <h3 class="proposed-paper-introducer"><strong>The proposed paper's title:</strong></h3>
+        <br>
+        <h2 class="proposed-paper-name">Protecting Neural Data Privacy with Quantum-Safe CKKS Lattice-Based Homomorphic Encryption in Privacy-Preserving Machine Learning</h2>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="section" id="Projects">
+        <h2 class="sectionTitle">Select Projects</h2>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Node2 (Advanced IoT Server)</h3>
+                    <p>Node2 is a high-performance WebSocket server built to integrate smart home devices into a centralized, responsive dashboard. Designed for seamless device communication, it handles multiple connections at once with robust data handling and real-time control.</p>
+                    <br>
+                    <ul class="project-tech-skills">
+                        <li><strong>Technologies:</strong> Node.js, ReactJS, Vanilla HTML/CSS, JSON, JavaScript</li>
+                        <li><strong>Security:</strong> Cryptographic security with hashed passwords, JSON Web Tokens for secure authentication</li>
+                        <li><strong>Features:</strong> Real-time updates, device state monitoring, efficient resource management, WebSocket handling for seamless data flow</li>
+                        <li><strong>Performance:</strong> Optimized networking for low latency and high responsiveness</li>
+                    </ul>
+                </div>
+                <div class="project-icons">
+                    <a href="https://www.youtube.com/watch?v=bMlyzvfn4BI" target="_blank" class="youtube-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://github.com/TheTheoM/nodeServer" target="_blank" class="github-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Hybrid IDPS (Cyber Tool)</h3>
+                    <p>This custom-built Intrusion Detection and Prevention System actively monitors network and user activities to detect and prevent threats. It uses a Node.js backend and a ReactJS frontend for real-time alerting and threat correlation, enhancing network security.</p>
+                    <br>
+                    <ul class="project-tech-skills">
+                        <li><strong>Technologies:</strong> Node.js, ReactJS, HTML/CSS, JSON</li>
+                        <li><strong>Security:</strong> Cryptographic hashing for user actions, JSON Web Tokens for secure sessions</li>
+                        <li><strong>Features:</strong> Threat intelligence correlation, real-time network monitoring, automated alert generation</li>
+                        <li><strong>Performance:</strong> Optimized for minimal impact on network resources</li>
+                    </ul>
+                </div>
+                <div class="project-icons">
+                    <a href="https://github.com/TheTheoM/HybridIDPS" target="_blank" class="github-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>ToneXplorer (Audio Equalization App)</h3>
+                    <p>ToneXplorer is an audio analysis and equalization tool designed to measure speaker frequency response and generate custom EQ settings for an optimized sound profile. It captures and processes data to create a flat, balanced listening experience.</p>
+                    <br>
+                    <ul class="project-tech-skills">
+                        <li><strong>Technologies:</strong> Python, Matplotlib, Numpy, Scipy</li>
+                        <li><strong>Audio Processing:</strong> Custom sine wave sweeps, frequency-amplitude data extraction</li>
+                        <li><strong>Features:</strong> Real-time audio visualization, equalization band generation</li>
+                        <li><strong>Performance:</strong> Efficient signal processing algorithms for smooth operation</li>
+                    </ul>
+                </div>
+                <div class="project-icons">
+                    <a href="https://github.com/TheTheoM/ToneXplorer-" target="_blank" class="github-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card" id="card-gameOfLife">
+                    <div class="card-content">
+                        <h3>Conway's Game of Life</h3>
+                        <p>This project visualizes Conway's Game of Life using the DearPyGui library, allowing users to interact with a grid of cells that evolve according to Conway's rules. Each cell can toggle between alive and dead states, forming dynamic patterns based on initial conditions.</p>
+                        <br>
+                        <ul class="project-tech-skills">
+                            <li><strong>Technologies:</strong> Python, DearPyGui (IMGUI), Object-Oriented Programming (OOP)</li>
+                            <li><strong>Graphics:</strong> Interactive grid display, real-time cell state updates, customizable grid size</li>
+                            <li><strong>Features:</strong> User controls to start, stop, and adjust simulation speed, customizable square size, and Conway's rules implementation for cellular evolution</li>
+                        </ul>
+                    </div>
+                    <div class="project-icons">
+                        <a href="https://github.com/TheTheoM/DPGConwaysGameOfLife" target="_blank" class="github-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                <canvas id="gameOfLife"></canvas>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h3>Gravity Simulator</h3>
+                    <p>The Gravity Simulator models celestial bodies interacting through gravity using Newtonian mechanics. It simulates the motion of objects like the sun, moons, and planets, considering their masses, velocities, and gravitational forces. The simulation includes collision logic and real-time visualization of gravitational attraction.</p>
+                    <br>
+                    <ul class="project-tech-skills">
+                        <li><strong>Technologies:</strong> Python, Pygame, Turtle</li>
+                        <li><strong>Physics:</strong> Based on Newtonian mechanics, including gravitational force and collision detection.</li>
+                        <li><strong>Features:</strong> Real-time motion visualization, customizable parameters for mass, velocity, and collision behavior</li>
+                        <li><strong>Performance:</strong> Optimized for smooth, real-time physics updates and rendering</li>
+                    </ul>
+                </div>
+                <div class="project-icons">
+                    <a href="https://github.com/TheTheoM/GravitySim" target="_blank" class="github-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-content">
+                    <h3>RGB LED Controller </h3>
+                    <p>This project involves controlling a strip of 300 WS2812B RGB LEDs using an ESP8266 microcontroller. The LEDs are controlled over a WebSocket connection, allowing real-time updates of RGB values. It also includes a power switch, brightness control via a potentiometer, and feedback using a status LED.</p>
+                    <br>
+                    <ul class="project-tech-skills">
+                        <li><strong>Technologies:</strong> Arduino, ESP8266, WebSockets, FastLED, WiFi</li>
+                        <li><strong>Hardware:</strong> WS2812B RGB LED strip, ESP8266 microcontroller, potentiometer, push-button switch</li>
+                        <li><strong>Features:</strong> WebSocket-based control for dynamic color changes, brightness control via a potentiometer, real-time feedback with LEDs</li>
+                        <li><strong>Performance:</strong> Optimized for smooth LED control with minimal delay, real-time interaction through WebSocket</li>
+                    </ul>
+                </div>
+                <div class="project-icons">
+                    <a href="https://github.com/TheTheoM/ESPWifiController" target="_blank" class="github-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            
+        </div>
+        <canvas id="gradientCanvas"></canvas>
+    </section>
+    </div>
+
+    <script>
+        const CGOL_canvas = document.getElementById('gameOfLife');
+        const CGOL_ctx = CGOL_canvas.getContext('2d');
+        const container = document.getElementById('card-gameOfLife');
+    
+        let CELL_SIZE = 15;  
+        let COLS, ROWS;
+        let grid;
+    
+        let fps = 5; 
+    
+        let lastUpdateTime = 0;
+        let isHovered = false;  
+    
+        function initializeGrid() {
+            CGOL_canvas.width = container.offsetWidth;
+            CGOL_canvas.height = container.offsetHeight * 0.30;  
+    
+            const containerWidth = CGOL_canvas.width;
+            const containerHeight = CGOL_canvas.height;
+    
+            const maxCols = Math.floor(containerWidth / CELL_SIZE);
+            const maxRows = Math.floor(containerHeight / CELL_SIZE);
+    
+            if (containerWidth / maxCols > containerHeight / maxRows) {
+                CELL_SIZE = Math.floor(containerHeight / maxRows);
+            } else {
+                CELL_SIZE = Math.floor(containerWidth / maxCols);
+            }
+    
+            COLS = Math.floor(CGOL_canvas.width / CELL_SIZE);
+            ROWS = Math.floor(CGOL_canvas.height / CELL_SIZE);
+    
+            grid = new Array(COLS).fill(null)
+                .map(() => new Array(ROWS).fill(null)
+                .map(() => Math.random() > 0.8));
+        }
+    
+        function update() {
+            const next = grid.map(arr => [...arr]);
+    
+            for (let col = 0; col < COLS; col++) {
+                for (let row = 0; row < ROWS; row++) {
+                    const cell = grid[col][row];
+                    let numNeighbors = 0;
+                    for (let i = -1; i < 2; i++) {
+                        for (let j = -1; j < 2; j++) {
+                            if (i === 0 && j === 0) continue;
+                            const x = (col + i + COLS) % COLS;
+                            const y = (row + j + ROWS) % ROWS;
+                            numNeighbors += grid[x][y];
+                        }
+                    }
+                    if (cell && (numNeighbors < 2 || numNeighbors > 3)) next[col][row] = 0;
+                    else if (!cell && numNeighbors === 3) next[col][row] = 1;
+                }
+            }
+            grid = next;
+        }
+    
+        function draw() {
+            CGOL_ctx.clearRect(0, 0, CGOL_canvas.width, CGOL_canvas.height);
+    
+            for (let col = 0; col < COLS; col++) {
+                for (let row = 0; row < ROWS; row++) {
+                    const cell = grid[col][row];
+                    CGOL_ctx.fillStyle = cell ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0)';
+                    CGOL_ctx.fillRect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE - 1, CELL_SIZE - 1);
+                }
+            }
+        }
+    
+        function animate(currentTime) {
+            if (isHovered && currentTime - lastUpdateTime > 1000 / fps) {
+                update();
+                draw();
+                lastUpdateTime = currentTime;
+            }
+            requestAnimationFrame(animate);
+        }
+    
+        initializeGrid();
+        requestAnimationFrame(animate);
+    
+        window.addEventListener('resize', () => {
+            initializeGrid();
+        });
+    
+        container.addEventListener('mouseenter', () => {
+            isHovered = true;  
+        });
+    
+        container.addEventListener('mouseleave', () => {
+            isHovered = false;  
+        });
+    </script>
+    <script>
+        const canvas = document.getElementById('gradientCanvas');
+        const ctx = canvas.getContext('2d');
+        const projectsElement = document.getElementById('Projects');
+        
+        let mouseX = 0, mouseY = 0; 
+    
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+    
+        projectsElement.addEventListener('mousemove', (event) => {
+            const canvasTop = canvas.getBoundingClientRect().top + window.scrollY;
+    
+            mouseX = event.clientX + window.scrollX;
+            mouseY = event.clientY + window.scrollY - canvasTop;
+    
+            drawGradient(); // Draw gradient on canvas
+        });
+    
+        function drawGradient() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+            const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 1300);
+            gradient.addColorStop(0, 'rgba(54, 63, 99, 0.235)');
+            gradient.addColorStop(1, 'transparent');
+    
+            // Fill the canvas with the gradient
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+    <br/>
+    <!-- Achievements Section -->
+    <section class="section" id="achievements">
+        <h2  class="sectionTitle">Achievements</h2>
+        <ul class="achievements-list">
+            <li><strong>Two-time Dean's List Honoree:</strong> Recognized for outstanding IT academic performance </li>
+            <li><strong>Invited for Advanced Threat Defense Certification Course:</strong> Selected for an exclusive certification course focused on advanced cybersecurity techniques and threat defense strategies.</li>
+            <li><strong>Winner of Samsung National STEM Competition:</strong> Awarded first place in a national competition, showcasing skills in science, technology, engineering, and mathematics.</li>
+            <li><strong>University Average Grade - High Distinction (WAM 90+):</strong> Consistently achieved a High Distinction average throughout my studies at the University of Technology Sydney.</li>
+        </ul>
+    </section>
+
 
 </body>
 </html>
+
+
+
+
