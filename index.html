@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic">
-    <script type="module" src="script.js" defer></script>
-    <script type="module" src="script-copy.js" defer></script>
+    <script type="module" src="LatticePattern.js" defer></script>
+    <script type="module" src="BannerPattern.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Quintessential&family=Roboto:wght@300&family=Special+Elite&display=swap" rel="stylesheet">
@@ -146,7 +146,7 @@
         <div class="banner-content">
             <!-- <h1>HI, I'M THEO</h1> -->
             <h1>theodore marlow</h1>
-            <h3>Software Development and Cyber Enthusiast</h3>
+            <h3>Software Developer, Audiophile and Cyber Enthusiast</h3>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/theodore-marlow/" target="_blank">
                     <i class="fab fa-linkedin"></i>
@@ -160,16 +160,14 @@
             </div>
         </div>
     </div>
+
+    <!-- About Me Section -->
     <section class="section" id="about-me-section">
-        <!-- About Me Section -->
         <div class="about-me">
             <h1 class="sectionTitle">About Me</h1>
             <div class="context-text">
-                <p class="intro">
-                    I’m a true multidisciplinary at my core, passionate about software, cybersecurity, and creating meaningful digital experiences
-                </p>
                 <p>
-                    My name is Theo, and my journey into the world of tech began in an unconventional way. 
+                    I'm Theo and my journey into the world of tech began in an unconventional way. 
                     As a kid, I would pick up broken electronics from the side of the road, fix them, and try to make them work again. 
                     That hands-on experience sparked my curiosity, and soon I was linking these salvaged devices together with code. 
                   </p>
@@ -179,14 +177,14 @@
                     boundaries of what’s possible.
                   </p>
                 <br>
-                <h3>Here’s what I’ve been working with:</h3>
+                <h3>Here’s my toolset:</h3>
                 <ul class="tech-list">
                     <li>Python (4+ years)</li>
-                    <li>AI & ML</li>
+                    <li>Embedded</li>
                     <li>Node.js</li>
                     <li>ReactJS</li>
                     <li>WordPress + Elementor</li>
-                    <li>Docker, Git, Jenkins</li>
+                    <li>Docker, Git, Jira</li>
                     <li>Quantum Cryptography</li>
                     <li>C++ / C</li>
                     <li>Full Stack Dev</li>
@@ -208,30 +206,26 @@
                 <div class="context-text">
                     <br/>
                     <p>
-                        BCIs allow human brains to <strong>directly</strong> control or even 
-                            communicate with machines, devices, and more. But the problem is, current BCI data
-                            can be used to literally read someone's mind—guess passwords, subliminally 
-                            detect who you know, figure out your mood, and more. 
+                        BCIs, or Brain Computer Interfaces, allow human brains to <strong>directly</strong> control or even 
+                            communicate with machines, devices, and software. But the problem is, the data that BCI's record,
+                            if stolen, can be used to literally read someone's mind, allowing hackers to steal your passwords, 
+                            figure out what people you know, your mood and much more. 
                     </p>
                     <br/>
                     <p>
-                    This problem will only get more severe as in the future
+                    This problem will only get more severe as in the future as
                     <strong>Quantum Computers</strong> will break encryption making all BCI
-                        recorded data vulnerable. 
+                        recorded data vulnerable to attack!
                     </p>
                     <br>
 
                     <p>
-                        My solution uses <strong>Lattices</strong>, a mathematical structure similar to the ones on the graphic, 
-                        to securely encrypt the data, even safely from Quantum Computers.
-
-                        The remarkable things about Lattices, is they allow for data to be processed, while encrypted,
-                        something that is impossible with traditional cryptography. Meaning that your vulnerable data, 
-                        would never need to be decrypted (where its vulnerable) to be processed.
+                        My approach uses <strong>Lattices</strong> to encrypt the data, in a way that Quantum Computers cannot break. (The graphic is an representation of a lattice)
+                        The key advantage of lattices is that they enable data to be processed while still encrypted, which is not possible with traditional cryptography. This means that your sensitive data never needs to be decrypted, reducing the risk of exposure during processing.
                     </p>
                     <br/>
                     <p>
-                        This property is called <strong> Homomorphic Cryptography</strong>.
+                        This ground-breaking property is called <strong> Homomorphic Cryptography</strong>.
                     </p>
                 </div>
             </div>
@@ -247,7 +241,7 @@
     
     <!-- Projects Section -->
     <section class="section" id="Projects">
-        <h2 class="sectionTitle">Select Projects</h2>
+        <h2 class="sectionTitle">Projects</h2>
         <div class="card-container">
             <div class="card">
                 <div class="card-content">
@@ -469,54 +463,95 @@
             isHovered = false;  
         });
     </script>
-    <script>
-        const canvas = document.getElementById('gradientCanvas');
-        const ctx = canvas.getContext('2d');
-        const projectsElement = document.getElementById('Projects');
-        
-        let mouseX = 0, mouseY = 0; 
-    
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-    
-        projectsElement.addEventListener('mousemove', (event) => {
-            const canvasTop = canvas.getBoundingClientRect().top + window.scrollY;
-    
-            mouseX = event.clientX + window.scrollX;
-            mouseY = event.clientY + window.scrollY - canvasTop;
-    
-            drawGradient(); // Draw gradient on canvas
-        });
-    
-        function drawGradient() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-            const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 1300);
-            gradient.addColorStop(0, 'rgba(54, 63, 99, 0.235)');
-            gradient.addColorStop(1, 'transparent');
-    
-            // Fill the canvas with the gradient
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-    </script>
+
     <br/>
-    <!-- Achievements Section -->
-    <section class="section" id="achievements">
-        <h2  class="sectionTitle">Achievements</h2>
-        <ul class="achievements-list">
-            <li><strong>Two-time Dean's List Honoree:</strong> Recognized for outstanding IT academic performance </li>
-            <li><strong>Invited for Advanced Threat Defense Certification Course:</strong> Selected for an exclusive certification course focused on advanced cybersecurity techniques and threat defense strategies.</li>
-            <li><strong>Winner of Samsung National STEM Competition:</strong> Awarded first place in a national competition, showcasing skills in science, technology, engineering, and mathematics.</li>
-            <li><strong>University Average Grade - High Distinction (WAM 90+):</strong> Consistently achieved a High Distinction average throughout my studies at the University of Technology Sydney.</li>
-        </ul>
+    
+    <!-- Job Experience -->
+    <section class="section" id="Work-History">
+        <h2>Job Experience</h2>
+    
+        <div class="timeline">
+            <div class="job-card">
+                <div class="icon-circle">💼</div>
+                <div class="date">July 2024 — PRESENT</div>
+                <h3>Full Stack Web Developer · Aykira Internet Solutions</h3>
+                <p>Collaborate with clients to design, develop, and update websites, focusing on improving both functionality and cybersecurity. Provide client support and tailor solutions to meet individual business needs.</p>
+                <div class="tags">
+                    <div class="tag">JavaScript</div>
+                    <div class="tag">ReactJS</div>
+                    <div class="tag">HTML/CSS</div>
+                    <div class="tag">REST/JSON APIs</div>
+                    <div class="tag">Cybersecurity</div>
+                </div>
+            </div>
+        
+            <div class="job-card">
+                <div class="icon-circle">📘</div>
+                <div class="date">July 2024 — PRESENT</div>
+                <h3>Tutor · Alchemy Tuition</h3>
+                <p>Specialize in tutoring students in Coding, Mechatronics, Math Extension 1, and Physics. Create customized learning plans to enhance understanding and engagement.</p>
+                <div class="tags">
+                    <div class="tag">Coding</div>
+                    <div class="tag">Mechatronics</div>
+                    <div class="tag">Math Extension 1</div>
+                    <div class="tag">Physics</div>
+                </div>
+            </div>
+        
+            <div class="job-card">
+                <div class="icon-circle">🧑‍💻</div>
+                <div class="date">August 2023 — February 2024</div>
+                <h3>Junior Software Engineer · Conducive Technologies</h3>
+                <p>Improved the AI training pipeline and enhanced annotation software to streamline data processing and improve performance.</p>
+                <div class="tags">
+                    <div class="tag">Python</div>
+                    <div class="tag">AI Training</div>
+                    <div class="tag">Data Annotation</div>
+                    <div class="tag">Pipeline Optimization</div>
+                </div>
+            </div>
+        
+            <div class="job-card">
+                <div class="icon-circle">🎶</div>
+                <div class="date">July 2023</div>
+                <h3>Paid Worker (Construction & IT) · Splendour Music Festival</h3>
+                <p>Played a key role in setting up infrastructure, providing IT support, and handling physical tasks. Worked closely with a diverse and eccentric team, contributing to a successful event setup and operation.</p>
+                <div class="tags">
+                    <div class="tag">Construction</div>
+                    <div class="tag">IT Support</div>
+                    <div class="tag">Physical Labor</div>
+                </div>
+            </div>
+        
+            <div class="job-card">
+                <div class="icon-circle">🔐</div>
+                <div class="date">February 2022 — April 2022</div>
+                <h3>DevOps Trainee · ELMO Software</h3>
+                <p>Developed a Python SQL PII scanner and enhanced security within the DevOps pipeline, ensuring safe and compliant handling of sensitive data.</p>
+                <div class="tags">
+                    <div class="tag">Python</div>
+                    <div class="tag">SQL</div>
+                    <div class="tag">PII Management</div>
+                    <div class="tag">DevOps</div>
+                </div>
+            </div>
+                   
+            <div class="job-card">
+                <div class="icon-circle">🎓</div>
+                <div class="date">Feb 2022 — Nov 2025</div>
+                <h3>Bachelor of Computing Science · UTS</h3>
+                <p>Pursuing a degree with a major in Cybersecurity and Privacy, focusing on advanced topics in networking, machine learning, and security protocols. Achieved High Distinction and made the Dean’s List twice, demonstrating consistent academic excellence and a deep understanding of modern computing challenges.</p>
+                <div class="tags">
+                    <div class="tag">Cybersecurity</div>
+                    <div class="tag">Networking</div>
+                    <div class="tag">Cryptography</div>
+                    <div class="tag">Privacy</div>
+                    <div class="tag">High Distinction</div>
+                </div>
+            </div>
+        </div>
+        
     </section>
-
-
 </body>
 </html>
 
