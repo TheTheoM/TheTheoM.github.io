@@ -747,7 +747,8 @@ body {
   .job-card h3 {
     font-size: 24px;
     margin: 0;
-    color: #b0c4de;
+    margin-bottom: 5px;
+    color: var(--content-text-color);
   }
 
   .tags {
@@ -946,6 +947,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: 500px;
 }
 .social-icons-contact {
     display: flex;
