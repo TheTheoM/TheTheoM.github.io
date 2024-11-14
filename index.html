@@ -17,49 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<style>
 
-    .card {
-        position: relative;
-        background-color: transparent;
-    }
-
-    #gameOfLife {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        background-color: transparent;
-        height: 10%;
-        width: 100%;
-        filter: blur(4px);
-
-    }
-    #content {
-        position: relative;
-        z-index: 1;
-        color: white;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
-
-    .card-content-container {
-        z-index: 14;
-        position: absolute;
-            top: 0;
-        left: 0;
-        z-index: 100;
-        background-color: rgba(42, 9, 75, 0.334);
-        height: 100%;
-        width: 100%;
-
-    }
-
-    #card-gameOfLife > .card-content {
-        background-color: transparent !important;
-    }
-
-</style>
 <style>
     .card {
         position: relative;
@@ -72,10 +30,10 @@
         left: 0;
         z-index: -1;
         background-color: transparent;
-        height: 20%;  /* Set canvas height to 30% of container */
+        height: 20%; 
         width: 100%;
         filter: blur(4px);
-        display: none;  /* Initially hide the canvas */
+        display: none;  
     }
 
     #content {
@@ -101,7 +59,6 @@
         background-color: transparent !important;
     }
 
-    /* Show the canvas when hovering over the card */
     #card-gameOfLife:hover #gameOfLife {
         display: block;
     }
@@ -118,19 +75,16 @@
             <a href="#About">About</a>
             <a href="#Honours">honours</a>
             <a href="#Projects">Projects</a>
-            <!-- <a href="#work">Work</a> -->
-            <a href="#contact">Contact</a>
+            <a href="#Work-History">Work</a>
+            <a href="#Contact">Contact</a>
         </div>
     </div>
 
     <script>
-        // When the user scrolls the page, execute the function
         window.onscroll = function() {toggleNavbar()};
 
-        // Get the navbar
         var navbar = document.getElementById("navbar");
 
-        // Add the 'scrolled' class to the navbar when you scroll down 50px from the top
         function toggleNavbar() {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 navbar.classList.add("scrolled");
@@ -190,7 +144,7 @@
                     <li>Full Stack Dev</li>
                     <li>Threat Intelligence</li>
                     <li>SIEM & IDPS</li>
-                    <li>Incident Response</li>
+                    <li>HTML / CSS</li>
                 </ul>
             </div>
             <br/>
@@ -465,6 +419,7 @@
     </script>
 
     <br/>
+    <br/>
     
     <!-- Job Experience -->
     <section class="section" id="Work-History">
@@ -552,6 +507,25 @@
         </div>
         
     </section>
+
+<!-- Contact Section -->
+<section class="section" id="Contact">
+    <h2 class="sectionTitle">Get in Touch</h2>
+    <p class="sectionSubtitle">I’d love to connect! Feel free to reach out on any of these platforms – let’s chat, collaborate, or just say hello!</p>
+    
+    <div class="social-icons-contact">
+        <a href="https://www.linkedin.com/in/theodore-marlow/" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/TheTheoM/" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:theomarlow6@gmail.com">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+</section>
+
 </body>
 </html>
 
